@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>LE MAIRE TV — Pays</title>
+
+ <!-- FAVICON -->
+  <link rel="icon" type="image/png" href="assets/icons/favicon.png">
+
+  <link rel="stylesheet" href="pays.css">
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<header class="navbar">
+  <div class="logo">
+    <img src="assets/logo.png" alt="Logo LE MAIRE TV">
+  </div>
+
+  <nav class="nav-links">
+    <a href="index.html" data-page="index">Accueil</a>
+    <a href="live-tv.html" data-page="live-tv">Télévision</a>
+    <a href="pays.html" data-page="pays">Pays</a>
+    <a href="categories.html" data-page="categories">Catégories</a>
+    <a href="radio.html" data-page="radio">Radio</a>
+    <button>Connexion</button>
+  </nav>
+</header>
+
+<div class="page">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+
+  <!-- FIXED HEADER -->
+  <div class="sidebar-header">
+
+    <!-- SEARCH BAR -->
+    <div class="search-bar">
+      <input type="text" id="search-global-input" placeholder="Search...">
+    </div>
+
+    <!-- ALL CHANNELS BUTTON -->
+    <button id="all-channels-btn">ALL CHANNELS</button>
+
+  </div>
+
+  <!-- SCROLLABLE COUNTRY LIST -->
+  <div class="list" id="countries-list"></div>
+
+</aside>
+
+  <!-- MAIN CONTENT -->
+  <main class="content">
+    <h2 id="country-title">ALL CHANNELS</h2>
+    <div id="channels-grid" class="grid"></div>
+  </main>
+
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  © 2026 LE MAIRE TV — Plateforme de Streaming Mondiale • Pays
+</footer>
+
+<script src="pays.js"></script>
+
+</body>
+</html>

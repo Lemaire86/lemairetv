@@ -1,0 +1,402 @@
+/* GLOBAL */
+body {
+  margin: 0;
+  background: url('assets/images/background.png') center/cover no-repeat fixed;
+  font-family: 'Inter', sans-serif;
+  color: white;
+}
+
+/* NAVBAR */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4px 18px;
+  background: rgba(5, 6, 10, 0.85);
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 20;
+  height: 58px;
+  backdrop-filter: blur(10px);
+}
+
+.logo img {
+  height: 42px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 18px;
+  align-items: center;
+  flex-wrap: nowrap;
+  white-space: nowrap;
+  max-width: calc(100% - 120px);
+}
+
+.nav-links a {
+  color: #FFFFFF;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.nav-links a.active {
+  color: #F5C451;
+  font-weight: 700;
+}
+
+.nav-links button {
+  padding: 6px 14px;
+  font-size: 14px;
+  border-radius: 30px;
+  background: #F5C451;
+  color: #05060A;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+}
+
+/* PAGE LAYOUT */
+.page {
+  display: flex;
+  margin-top: 58px;
+  height: calc(100vh - 58px);
+}
+
+/* PLAYER CARD */
+.player-card {
+  flex: 1;
+  padding: 20px;
+  background: rgba(10, 12, 18, 0.85);
+  overflow-y: auto;
+}
+
+.player-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.player-header img {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+}
+
+.player-header-info h2 {
+  margin: 0;
+  font-size: 26px;
+}
+
+.player-header-info small {
+  color: #cccccc;
+}
+
+#tv-player {
+  width: 100%;
+  height: 420px;
+  background: black;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+
+.player-controls {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.player-controls button {
+  padding: 10px 20px;
+  background: #F5C451;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  color: #05060A;
+}
+
+.player-meta {
+  font-size: 14px;
+  color: #cccccc;
+}
+
+/* SIDEBAR */
+.sidebar {
+  width: 300px;
+  background: rgba(10, 12, 18, 0.85);
+  padding: 20px;
+  border-left: 2px solid #1f2229;
+  overflow-y: auto;
+}
+
+.search-bar input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 6px;
+  border: none;
+  background: #1f2229;
+  color: white;
+  margin-bottom: 20px;
+}
+
+.filters select {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 12px;
+  border-radius: 6px;
+  background: #1f2229;
+  color: white;
+  border: none;
+}
+
+.channel-list {
+  margin-top: 10px;
+}
+
+.channel-item {
+  background: #1f2229;
+  padding: 10px;
+  border-radius: 6px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.channel-item img {
+  width: 60px;
+  height: 40px;
+  object-fit: contain;
+}
+
+.channel-item:hover {
+  background: #2a2d35;
+}
+
+/* FOOTER */
+.footer {
+  padding: 20px;
+  text-align: center;
+  background: rgba(5, 6, 10, 0.85);
+  font-size: 14px;
+}
+
+/* REDUCE SEARCH BAR */
+.search-bar input {
+  width: 100%;
+  padding: 8px;
+  font-size: 13px;
+  border-radius: 6px;
+  border: none;
+  background: #1f2229;
+  color: white;
+  margin-bottom: 12px;
+}
+
+/* QUICK BUTTONS (PAYS + CATEGORIES) */
+.quick-buttons {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.quick-buttons button {
+  flex: 1;
+  padding: 8px 0;
+  background: #F5C451;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  color: #05060A;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+.quick-buttons button:hover {
+  background: #ffd76a;
+}
+
+/* FIX SEARCH BAR WIDTH + REMOVE SLIDE */
+.search-bar {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.search-bar input {
+  width: 90%;
+  max-width: 200px;
+  padding: 8px;
+  font-size: 13px;
+  border-radius: 6px;
+  border: none;
+  background: #1f2229;
+  color: white;
+  margin-bottom: 12px;
+  box-sizing: border-box;
+}
+
+/* REMOVE ANY HORIZONTAL SCROLL */
+.sidebar {
+  overflow-x: hidden;
+}
+
+/* SIDEBAR FIXED HEADER */
+.sidebar {
+  width: 300px;
+  background: rgba(10, 12, 18, 0.85);
+  padding: 0;
+  border-left: 2px solid #1f2229;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* FIXED TOP PART */
+.sidebar-header {
+  padding: 20px;
+  background: rgba(10, 12, 18, 0.95);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+/* FILTERS SAME LINE */
+.filters-row {
+  display: flex;
+  gap: 10px;
+}
+
+.filters-row select {
+  flex: 1;
+  padding: 8px;
+  font-size: 13px;
+  border-radius: 6px;
+  background: #1f2229;
+  color: white;
+  border: none;
+}
+
+/* CHANNEL LIST SCROLL ONLY */
+.channel-list {
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px;
+}
+
+/* RESPONSIVE FIX — MOBILE PORTRAIT */
+@media (max-width: 900px) and (orientation: portrait) {
+
+  .page {
+    flex-direction: column;
+    height: auto;
+  }
+
+  .player-card {
+    width: 100%;
+    order: 1;
+  }
+
+  #tv-player {
+    height: auto;
+    min-height: 240px;
+  }
+
+  .sidebar {
+    width: 100%;
+    order: 2;
+    max-height: 60vh;
+  }
+}
+
+/* RESPONSIVE FIX — MOBILE LANDSCAPE */
+@media (max-width: 900px) and (orientation: landscape) {
+
+  .page {
+    flex-direction: row;
+  }
+
+  #tv-player {
+    height: 60vh;
+  }
+
+  .sidebar {
+    max-height: 80vh;
+  }
+}
+
+/* SMALL PHONES */
+@media (max-width: 600px) {
+
+  #tv-player {
+    height: auto;
+  }
+
+  .sidebar {
+    max-height: 55vh;
+  }
+}
+
+/* NAVBAR */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4px 18px;
+  background: rgba(5, 6, 10, 0.85);
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 20;
+  height: 58px;
+  backdrop-filter: blur(10px);
+  box-sizing: border-box;
+}
+
+.logo img {
+  height: 42px;
+}
+
+/* NAV-LINKS FIXED, NON-BREAKING */
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+
+  flex-wrap: nowrap;          /* Pa janm ale sou 2 liy */
+  white-space: nowrap;        /* Pa kraze tèks */
+  overflow: hidden;           /* Pa kite depase */
+  max-width: calc(100% - 140px); /* Espas pou logo + bouton Connexion */
+}
+
+.nav-links a,
+.nav-links button {
+  flex-shrink: 0;             /* Pa retresi */
+}
+
+.nav-links a {
+  color: #FFFFFF;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.nav-links a.active {
+  color: #F5C451;
+  font-weight: 700;
+}
+
+.nav-links button {
+  padding: 6px 14px;
+  font-size: 14px;
+  border-radius: 30px;
+  background: #F5C451;
+  color: #05060A;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+}

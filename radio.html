@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>LE MAIRE TV — Radio</title>
+
+  <!-- FAVICON -->
+  <link rel="icon" type="image/png" href="assets/icons/favicon.png">
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="radio.css">
+</head>
+
+<body>
+
+<!-- NAVBAR (CORRIGÉ) -->
+<header class="navbar">
+  <div class="logo">
+    <img src="assets/logo.png" alt="Logo LE MAIRE TV">
+  </div>
+
+  <nav class="nav-links">
+    <a href="index.html" data-page="index">Accueil</a>
+    <a href="live-tv.html" data-page="live-tv">Télévision</a>
+    <a href="pays.html" data-page="pays">Pays</a>
+    <a href="categories.html" data-page="categories">Catégories</a>
+    <a href="radio.html" data-page="radio">Radio</a>
+    <button>Connexion</button>
+  </nav>
+</header>
+
+<div class="page">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+
+    <div class="sidebar-header">
+      <div class="search-bar">
+        <input type="text" id="search-radio" placeholder="Rechercher une station...">
+      </div>
+
+      <button id="all-stations-btn">Toutes les stations</button>
+    </div>
+
+    <div class="station-list" id="station-list"></div>
+
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <main class="content">
+
+    <!-- FIXED BOTTOM LEFT RADIO PLAYER -->
+    <div class="radio-bottom-player">
+      <div class="player-controls">
+        <button id="prev-btn">⟨ Précédent</button>
+        <button id="next-btn">Suivant ⟩</button>
+      </div>
+
+      <h4 id="bottom-title">Sélectionnez une station</h4>
+      <audio id="bottom-player" controls></audio>
+    </div>
+
+    <!-- GRID -->
+    <h2 class="grid-title">Stations Radio</h2>
+    <div class="grid" id="station-grid"></div>
+
+  </main>
+
+</div>
+
+<footer class="footer">
+ © 2026 LE MAIRE TV — Plateforme de Streaming Mondiale • Radio
+</footer>
+
+<script src="radio.js"></script>
+
+<script>
+  let currentPage = window.location.pathname.split("/").pop();
+  if (currentPage === "" || currentPage === "/") currentPage = "radio.html";
+  currentPage = currentPage.replace(".html", "");
+
+  document.querySelectorAll(".nav-links a").forEach(link => {
+    if (link.dataset.page === currentPage) link.classList.add("active");
+  });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+
+</body>
+</html>

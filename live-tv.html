@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>LE MAIRE TV — Télévision</title>
+
+ <!-- FAVICON -->
+  <link rel="icon" type="image/png" href="assets/icons/favicon.png">
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="live-tv.css">
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <header class="navbar">
+  <div class="logo">
+    <img src="assets/logo.png" alt="Logo LE MAIRE TV">
+  </div>
+
+  <nav class="nav-links">
+    <a href="index.html" data-page="index">Accueil</a>
+    <a href="live-tv.html" data-page="live-tv">Télévision</a>
+    <a href="pays.html" data-page="pays">Pays</a>
+    <a href="categories.html" data-page="categories">Catégories</a>
+    <a href="radio.html" data-page="radio">Radio</a>
+    <button>Connexion</button>
+  </nav>
+</header>
+
+  <!-- PAGE -->
+  <main class="page">
+
+    <!-- PLAYER -->
+    <section class="player-card">
+
+      <div class="player-header">
+        <img id="current-logo" src="assets/logo.png" alt="Channel Logo">
+        <div class="player-header-info">
+          <h2 id="current-name">Select a channel</h2>
+          <small id="current-meta">Category • Country</small>
+        </div>
+      </div>
+
+      <video id="tv-player" controls autoplay></video>
+
+      <div class="player-controls">
+        <button class="btn-prev" id="btn-prev">Previous</button>
+        <button class="btn-next" id="btn-next">Next</button>
+      </div>
+
+      <div class="player-meta">
+        <span id="current-url">No stream selected</span>
+      </div>
+
+    </section>
+
+    <!-- SIDEBAR -->
+<aside class="sidebar">
+
+  <!-- FIXED HEADER INSIDE SIDEBAR -->
+  <div class="sidebar-header">
+
+    <!-- SEARCH BAR -->
+    <div class="search-bar">
+      <input type="text" id="search-input" placeholder="Search channel...">
+    </div>
+
+    <!-- FILTERS ON SAME LINE -->
+    <div class="filters-row">
+      <select id="filter-country">
+        <option value="">Pays</option>
+        <option value="Haiti">🇭🇹 Haiti</option>
+        <option value="France">🇫🇷 France</option>
+        <option value="USA">🇺🇸 USA</option>
+        <option value="Canada">🇨🇦 Canada</option>
+        <option value="Spain">🇪🇸 Espagne</option>
+        <option value="Dominican Republic">🇩🇴 Santo Domingo</option>
+        <option value="Mexico">🇲🇽 Mexico</option>
+        <option value="UK">🇬🇧 United Kingdom</option>
+        <option value="Brazil">🇧🇷 Brazil</option>
+        <option value="Colombia">🇨🇴 Colombia</option>
+        <option value="Argentina">🇦🇷 Argentina</option>
+        <option value="Germany">🇩🇪 Germany</option>
+        <option value="Italy">🇮🇹 Italy</option>
+        <option value="Japan">🇯🇵 Japan</option>
+      </select>
+
+      <select id="filter-category">
+        <option value="">Categories</option>
+        <option value="Movies">Movies</option>
+        <option value="Series">Series</option>
+        <option value="Kids">Kids</option>
+        <option value="Cartoons">Cartoons</option>
+        <option value="Anime">Anime</option>
+        <option value="News">News</option>
+        <option value="World News">World News</option>
+        <option value="Local News">Local News</option>
+        <option value="Music">Music</option>
+        <option value="Radio Music">Radio Music</option>
+        <option value="Hits">Hits</option>
+        <option value="Sports">Sports</option>
+        <option value="Live Sports">Live Sports</option>
+        <option value="Football">Football</option>
+        <option value="Basketball">Basketball</option>
+        <option value="General">General</option>
+        <option value="Lifestyle">Lifestyle</option>
+        <option value="Documentary">Documentary</option>
+      </select>
+    </div>
+
+  </div>
+
+  <!-- SCROLLABLE CHANNEL LIST -->
+  <div class="channel-list" id="channel-list"></div>
+
+</aside>
+
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    © 2026 LE MAIRE TV — Plateforme de Streaming Mondiale • Télévision
+  </footer>
+
+  <!-- SCRIPT LIVE TV -->
+  <script src="live-tv.js"></script>
+
+  <!-- SCRIPT ACTIVE NAVBAR -->
+  <script>
+    const currentPage = window.location.pathname.split("/").pop().replace(".html", "");
+
+    document.querySelectorAll(".nav-links a").forEach(link => {
+      if (link.dataset.page === currentPage) {
+        link.classList.add("active");
+      }
+    });
+  </script>
+
+</body>
+</html>

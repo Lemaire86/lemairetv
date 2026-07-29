@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>LE MAIRE TV — Categories</title>
+
+ <!-- FAVICON -->
+  <link rel="icon" type="image/png" href="assets/icons/favicon.png">
+
+  <link rel="stylesheet" href="categories.css">
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<header class="navbar">
+  <div class="logo">
+    <img src="assets/logo.png" alt="Logo LE MAIRE TV">
+  </div>
+
+  <nav class="nav-links">
+    <a href="index.html" data-page="index">Accueil</a>
+    <a href="live-tv.html" data-page="live-tv">Télévision</a>
+    <a href="pays.html" data-page="pays">Pays</a>
+    <a href="categories.html" data-page="categories">Catégories</a>
+    <a href="radio.html" data-page="radio">Radio</a>
+    <button>Connexion</button>
+  </nav>
+</header>
+
+<div class="page">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <h2 class="sidebar-title">CATEGORIES</h2>
+
+    <div class="search-global">
+      <input type="text" id="search-global-input" placeholder="Search...">
+      <button id="all-channels-btn">ALL CHANNELS</button>
+      <div id="search-suggestions"></div>
+    </div>
+
+    <div id="categories-list" class="list"></div>
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <main class="content">
+    <h2 id="category-title">ALL CHANNELS</h2>
+    <div id="channels-grid" class="grid"></div>
+  </main>
+
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  © 2026 LE MAIRE TV — Plateforme de Streaming Mondiale • Catégories
+</footer>
+
+<script src="categories.js"></script>
+
+</body>
+</html>
