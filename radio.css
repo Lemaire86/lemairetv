@@ -24,11 +24,19 @@
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 16px;
+  gap: 18px;
   white-space: nowrap;
-  overflow: hidden;
-  max-width: 70%;        /* ← LIMIT pou li pa gaye */
-  justify-content: flex-end;
+
+  /* FIX POU PA DEPASE EKRAN AN */
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+
+  scrollbar-width: none; /* Firefox */
+}
+
+.nav-links::-webkit-scrollbar {
+  display: none; /* Chrome / Edge */
 }
 
 /* LINKS */
