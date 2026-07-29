@@ -23,29 +23,19 @@
 /* NAV LINKS FIXED */
 .nav-links {
   display: flex;
-  align-items: center;
   gap: 18px;
+  align-items: center;
+  flex-wrap: nowrap;
   white-space: nowrap;
-
-  /* FIX POU PA DEPASE EKRAN AN */
-  max-width: 100%;
-  overflow-x: auto;
-  overflow-y: hidden;
-
-  scrollbar-width: none; /* Firefox */
+  max-width: calc(100% - 120px);
+  overflow: hidden;
 }
 
-.nav-links::-webkit-scrollbar {
-  display: none; /* Chrome / Edge */
-}
-
-/* LINKS */
 .nav-links a {
   color: #FFFFFF;
   text-decoration: none;
   font-size: 14px;
   font-weight: 500;
-  padding: 4px 6px;      /* ← Ranje spacing */
 }
 
 .nav-links a.active {
@@ -53,7 +43,6 @@
   font-weight: 700;
 }
 
-/* BUTTON */
 .nav-links button {
   padding: 6px 14px;
   font-size: 14px;
@@ -63,7 +52,6 @@
   font-weight: 600;
   border: none;
   cursor: pointer;
-  white-space: nowrap;
 }
 
 /* MOBILE FIX */
