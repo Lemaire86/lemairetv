@@ -62,7 +62,6 @@ async function loadPlaylists() {
       const res = await fetch(url);
       const text = await res.text();
 
-      /* Playlist Haiti ou a → fòse kategori Haiti */
       if (url.includes("Lemaire86/Le-Maire-TV")) {
         parseM3U(text, "Haiti");
       } else {
@@ -74,11 +73,21 @@ async function loadPlaylists() {
     }
   }
 
-  fillCategories();   // ← RANPLI CATEGORIES YO
-  renderChannels();   // ← Afiche lis chèn yo
+  /* ⭐ FÒSE LMTV VIN PREMYE CHÈN APRÈ TOUT PLAYLISTS FIN CHAJE */
+  channels = [
+    {
+      name: "LE MAIRE TV",
+      logo: "https://raw.githubusercontent.com/Lemaire86/lemairetv/refs/heads/main/assets/logo.png",
+      url: "https://lmtv.lemairetv.uk/hls/stream.m3u8",
+      category: "Haiti",
+      country: "Haiti"
+    },
+    ...channels
+  ];
 
-  /* Chaje LMTV otomatikman kòm premye chèn */
-  loadChannel(0);
+  fillCategories();
+  renderChannels();
+  loadChannel(0); // ← LMTV ap chaje otomatikman
 }
 
 /* ---------------- PARSE M3U ---------------- */
@@ -105,7 +114,6 @@ function parseM3U(text, forceCategory = null) {
       const countryMatch = line.match(/country="(.*?)"/);
       country = countryMatch ? countryMatch[1] : "Unknown";
 
-      /* FÒSE KATEGORI HAITI */
       if (forceCategory) {
         category = forceCategory;
         country = forceCategory;
