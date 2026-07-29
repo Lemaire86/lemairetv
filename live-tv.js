@@ -13,12 +13,24 @@ const playlists = [
   "https://ip-tv.app/Sports",
   "https://iptv-org.github.io/iptv/index.m3u",
   "https://raw.githubusercontent.com/ipstreet312/freeiptv/master/all.m3u",
-  "https://raw.githubusercontent.com/Free-TV/IPTV/master/playlist.m3u8"
+  "https://raw.githubusercontent.com/Free-TV/IPTV/master/playlist.m3u8",
+
+  /* Playlist LMTV LIVE */
+  "https://raw.githubusercontent.com/Lemaire86/lemairetv/refs/heads/main/assets/data/lmtv-live.m3u"
 ];
 
 /* ---------------- GLOBALS ---------------- */
 let channels = [];
 let currentIndex = 0;
+
+/* ---------------- AJOUTE LMTV KÒM PREMYE CHÈN ---------------- */
+channels.push({
+  name: "LE MAIRE TV",
+  logo: "https://raw.githubusercontent.com/Lemaire86/lemairetv/refs/heads/main/assets/logo.png",
+  url: "https://lmtv.lemairetv.uk/hls/stream.m3u8",
+  category: "Haiti",
+  country: "Haiti"
+});
 
 /* ---------------- CATEGORIES KI PI ENPÒTAN YO ---------------- */
 const importantCategories = [
@@ -39,7 +51,8 @@ const importantCategories = [
   "Basketball",
   "General",
   "Lifestyle",
-  "Documentary"
+  "Documentary",
+  "Haiti"
 ];
 
 /* ---------------- LOAD PLAYLISTS ---------------- */
@@ -63,7 +76,9 @@ async function loadPlaylists() {
 
   fillCategories();   // ← RANPLI CATEGORIES YO
   renderChannels();   // ← Afiche lis chèn yo
-  if (channels.length > 0) loadChannel(0);
+
+  /* Chaje LMTV otomatikman kòm premye chèn */
+  loadChannel(0);
 }
 
 /* ---------------- PARSE M3U ---------------- */
