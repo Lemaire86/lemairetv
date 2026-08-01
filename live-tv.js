@@ -27,7 +27,7 @@ let currentIndex = 0;
 channels.push({
   name: "LE MAIRE TV",
   logo: "https://raw.githubusercontent.com/Lemaire86/lemairetv/refs/heads/main/assets/logo.png",
-  url: "https://lmtv.lemairetv.uk/hls/stream.m3u8",
+  url: "https://lmtv.lemairetv.uk/hls/master.m3u8",
   category: "Haiti",
   country: "Haiti"
 });
