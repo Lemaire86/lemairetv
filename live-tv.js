@@ -1,19 +1,40 @@
 /* ---------------- PLAYLISTS ---------------- */
 const playlists = [
-  "https://iptv-org.github.io/iptv/countries/fr.m3u",
-  "https://ip-tv.app/France",
+  "https://ip-tv.app/Haiti",
 
   /* Playlist Haiti ou a */
   "https://raw.githubusercontent.com/Lemaire86/Le-Maire-TV/refs/heads/main/CODE%20IPTV/lmtv.m3u",
 
-  "https://ip-tv.app/Haiti",
-  "https://iptv-org.github.io/iptv/countries/ht.m3u",
-
-  "https://ip-tv.app/USA",
-  "https://ip-tv.app/Sports",
-  "https://iptv-org.github.io/iptv/index.m3u",
-  "https://raw.githubusercontent.com/ipstreet312/freeiptv/master/all.m3u",
-  "https://raw.githubusercontent.com/Free-TV/IPTV/master/playlist.m3u8",
+ "https://iptv-org.github.io/iptv/categories/animation.m3u",
+ "https://iptv-org.github.io/iptv/categories/auto.m3u",
+ "https://iptv-org.github.io/iptv/categories/business.m3u",
+ "https://iptv-org.github.io/iptv/categories/classic.m3u",
+ "https://iptv-org.github.io/iptv/categories/comedy.m3u",
+ "https://iptv-org.github.io/iptv/categories/cooking.m3u",
+ "https://iptv-org.github.io/iptv/categories/culture.m3u",
+ "https://iptv-org.github.io/iptv/categories/documentary.m3u",
+ "https://iptv-org.github.io/iptv/categories/education.m3u",
+ "https://iptv-org.github.io/iptv/categories/entertainment.m3u",
+ "https://iptv-org.github.io/iptv/categories/family.m3u",
+ "https://iptv-org.github.io/iptv/categories/general.m3u",
+ "https://iptv-org.github.io/iptv/categories/interactive.m3u",
+ "https://iptv-org.github.io/iptv/categories/kids.m3u",
+ "https://iptv-org.github.io/iptv/categories/legislative.m3u",
+ "https://iptv-org.github.io/iptv/categories/lifestyle.m3u",
+ "https://iptv-org.github.io/iptv/categories/movies.m3u",
+ "https://iptv-org.github.io/iptv/categories/music.m3u",
+ "https://iptv-org.github.io/iptv/categories/news.m3u",
+ "https://iptv-org.github.io/iptv/categories/outdoor.m3u",
+ "https://iptv-org.github.io/iptv/categories/public.m3u",
+ "https://iptv-org.github.io/iptv/categories/relax.m3u",
+ "https://iptv-org.github.io/iptv/categories/religious.m3u",
+ "https://iptv-org.github.io/iptv/categories/science.m3u",
+ "https://iptv-org.github.io/iptv/categories/series.m3u",
+ "https://iptv-org.github.io/iptv/categories/shop.m3u",
+ "https://iptv-org.github.io/iptv/categories/sports.m3u",
+ "https://iptv-org.github.io/iptv/categories/travel.m3u",
+ "https://iptv-org.github.io/iptv/categories/weather.m3u",
+ "https://iptv-org.github.io/iptv/categories/undefined.m3u"
 
   /* Playlist LMTV LIVE */
   "https://raw.githubusercontent.com/Lemaire86/lemairetv/refs/heads/main/assets/data/lmtv-live.m3u"
