@@ -33,14 +33,12 @@ const playlists = [
 
   /* 🇭🇹 HAITI */
   "https://ip-tv.app/Haiti",
-  "https://iptv-org.github.io/iptv/countries/ht.m3u",
-
-  /* 🌍 MELANJE (OPTIONAL) */
-  "https://iptv-org.github.io/iptv/index.m3u",
-  "https://iptv-org.github.io/iptv/index.country.m3u",
-  "https://raw.githubusercontent.com/ipstreet312/freeiptv/master/all.m3u",
-  "https://raw.githubusercontent.com/Free-TV/IPTV/master/playlist.m3u8"
+  "https://iptv-org.github.io/iptv/countries/ht.m3u"
 ];
+
+/* ---------------- GLOBALS ---------------- */
+let channels = [];
+let currentIndex = 0;
 
 /* ---------------- CATEGORIES KI PI ENPÒTAN YO ---------------- */
 const importantCategories = [
@@ -53,12 +51,52 @@ const importantCategories = [
   "Haiti"
 ];
 
+/* ---------------- PARSE M3U ---------------- */
+function parseM3U(text, forceCategory = null, forceCountry = null) {
+  const lines = text.split("\n");
+  let name = "";
+  let logo = "assets/logo.png";
+  let category = "General";
+  let country = "Unknown";
+
+  lines.forEach(line => {
+
+    if (line.startsWith("#EXTINF")) {
+
+      const info = line.split(",");
+      name = info[1] || "Unknown";
+
+      const tvgLogoMatch = line.match(/tvg-logo="(.*?)"/);
+      if (tvgLogoMatch) logo = tvgLogoMatch[1];
+
+      const groupMatch = line.match(/group-title="(.*?)"/);
+      if (groupMatch) category = groupMatch[1];
+
+      if (forceCategory) category = forceCategory;
+      if (forceCountry) country = forceCountry;
+    }
+
+    if (line.startsWith("http")) {
+      channels.push({
+        name,
+        logo,
+        url: line.trim(),
+        category,
+        country
+      });
+    }
+  });
+}
+
 /* ---------------- LOAD PLAYLISTS ---------------- */
 async function loadPlaylists() {
   for (const url of playlists) {
     try {
       const res = await fetch(url);
       const text = await res.text();
+
+      /* Evite playlist ki pa M3U */
+      if (!text.includes("#EXTM3U")) continue;
 
       if (url.includes("Le-Maire-TV")) {
         parseM3U(text, "Haiti", "Haiti");
@@ -84,8 +122,6 @@ async function loadPlaylists() {
       } else if (url.includes("/ht") || url.includes("Haiti")) {
         parseM3U(text, "Haiti", "Haiti");
 
-      } else {
-        parseM3U(text, "General", "France");
       }
 
     } catch (e) {
@@ -105,56 +141,14 @@ async function loadPlaylists() {
     ...channels
   ];
 
-  fillCategories();
   renderChannels();
+  fillCategories();
   loadChannel(0);
-}
-
-/* ---------------- PARSE M3U ---------------- */
-function parseM3U(text, forceCategory = null, forceCountry = null) {
-  const lines = text.split("\n");
-  let name = "";
-  let logo = "";
-  let category = "";
-  let country = "";
-
-  lines.forEach(line => {
-
-    if (line.startsWith("#EXTINF")) {
-
-      const info = line.split(",");
-      name = info[1] || "Unknown";
-
-      const tvgLogoMatch = line.match(/tvg-logo="(.*?)"/);
-      logo = tvgLogoMatch ? tvgLogoMatch[1] : "assets/logo.png";
-
-      const groupMatch = line.match(/group-title="(.*?)"/);
-      category = groupMatch ? groupMatch[1] : "General";
-
-      /* FÒSE KATEGORI YO SELON SA OU VLE */
-      if (forceCategory) category = forceCategory;
-
-      /* FÒSE PEYI YO SELON SA OU VLE */
-      if (forceCountry) country = forceCountry;
-      else country = "Unknown";
-    }
-
-    if (line.startsWith("http")) {
-      channels.push({
-        name,
-        logo,
-        url: line.trim(),
-        category,
-        country
-      });
-    }
-  });
 }
 
 /* ---------------- FILL IMPORTANT CATEGORIES ---------------- */
 function fillCategories() {
   const select = document.getElementById("filter-category");
-
   select.innerHTML = `<option value="">Categories</option>`;
 
   importantCategories.forEach(cat => {
@@ -174,9 +168,7 @@ function renderChannels() {
   channels.forEach((ch, index) => {
 
     if (search && !ch.name.toLowerCase().includes(search)) return;
-
     if (filterCat && ch.category !== filterCat) return;
-
     if (filterCountry && ch.country !== filterCountry) return;
 
     const item = document.createElement("div");
