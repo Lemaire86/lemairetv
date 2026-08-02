@@ -85,7 +85,7 @@ async function loadPlaylists() {
         parseM3U(text, "Haiti", "Haiti");
 
       } else {
-        parseM3U(text);
+        parseM3U(text, "General", "France");
       }
 
     } catch (e) {
@@ -131,8 +131,12 @@ function parseM3U(text, forceCategory = null, forceCountry = null) {
       const groupMatch = line.match(/group-title="(.*?)"/);
       category = groupMatch ? groupMatch[1] : "General";
 
+      /* FÒSE KATEGORI YO SELON SA OU VLE */
       if (forceCategory) category = forceCategory;
+
+      /* FÒSE PEYI YO SELON SA OU VLE */
       if (forceCountry) country = forceCountry;
+      else country = "Unknown";
     }
 
     if (line.startsWith("http")) {
