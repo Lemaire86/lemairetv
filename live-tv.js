@@ -1,6 +1,7 @@
 /* ---------------- PLAYLISTS ---------------- */
 const playlists = [
   "https://ip-tv.app/Haiti",
+  "https://iptv-org.github.io/iptv/index.country.m3u",
 
   /* Playlist Haiti ou a */
   "https://raw.githubusercontent.com/Lemaire86/Le-Maire-TV/refs/heads/main/CODE%20IPTV/lmtv.m3u",
@@ -35,9 +36,7 @@ const playlists = [
  "https://iptv-org.github.io/iptv/categories/travel.m3u",
  "https://iptv-org.github.io/iptv/categories/weather.m3u",
  "https://iptv-org.github.io/iptv/categories/undefined.m3u"
-
-  /* Playlist LMTV LIVE */
-  "https://raw.githubusercontent.com/Lemaire86/lemairetv/refs/heads/main/assets/data/lmtv-live.m3u"
+  
 ];
 
 /* ---------------- GLOBALS ---------------- */
