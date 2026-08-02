@@ -1,57 +1,55 @@
-/* ---------------- PLAYLISTS ---------------- */
+/* ---------------- PLAYLISTS LMTV (TRIYE SELON SA OU TE KREYE YO) ---------------- */
 const playlists = [
-  "https://iptv-org.github.io/iptv/countries/fr.m3u",
-  "https://ip-tv.app/France",
 
-  /* Playlist Haiti ou a */
+  /* 🇭🇹 LMTV – PREMYE NAN LIS LA */
   "https://raw.githubusercontent.com/Lemaire86/Le-Maire-TV/refs/heads/main/CODE%20IPTV/lmtv.m3u",
 
+  /* 🎶 MUSIC */
+  "https://iptv-org.github.io/iptv/categories/music.m3u",
+  "https://iptv-org.github.io/iptv/categories/entertainment.m3u",
+
+  /* 🎥 MOVIES */
+  "https://iptv-org.github.io/iptv/categories/movies.m3u",
+  "https://iptv-org.github.io/iptv/categories/classic.m3u",
+  "https://iptv-org.github.io/iptv/categories/series.m3u",
+
+  /* 👶 KIDS */
+  "https://iptv-org.github.io/iptv/categories/kids.m3u",
+  "https://iptv-org.github.io/iptv/categories/family.m3u",
+
+  /* 😂 CARTOONS */
+  "https://iptv-org.github.io/iptv/categories/animation.m3u",
+  "https://iptv-org.github.io/iptv/categories/comedy.m3u",
+
+  /* 📰 NEWS */
+  "https://iptv-org.github.io/iptv/categories/news.m3u",
+  "https://iptv-org.github.io/iptv/categories/business.m3u",
+  "https://iptv-org.github.io/iptv/categories/general.m3u",
+
+  /* 🇫🇷 FRANCE */
+  "https://iptv-org.github.io/iptv/countries/fr.m3u",
+  "https://ip-tv.app/France",
+  "https://iptv-org.github.io/iptv/categories/culture.m3u",
+
+  /* 🇭🇹 HAITI */
   "https://ip-tv.app/Haiti",
   "https://iptv-org.github.io/iptv/countries/ht.m3u",
 
-  "https://ip-tv.app/USA",
-  "https://ip-tv.app/Sports",
+  /* 🌍 MELANJE (OPTIONAL) */
   "https://iptv-org.github.io/iptv/index.m3u",
+  "https://iptv-org.github.io/iptv/index.country.m3u",
   "https://raw.githubusercontent.com/ipstreet312/freeiptv/master/all.m3u",
-  "https://raw.githubusercontent.com/Free-TV/IPTV/master/playlist.m3u8",
-
-  /* Playlist LMTV LIVE */
-  "https://raw.githubusercontent.com/Lemaire86/lemairetv/refs/heads/main/assets/data/lmtv-live.m3u"
+  "https://raw.githubusercontent.com/Free-TV/IPTV/master/playlist.m3u8"
 ];
-
-/* ---------------- GLOBALS ---------------- */
-let channels = [];
-let currentIndex = 0;
-
-/* ---------------- AJOUTE LMTV KÒM PREMYE CHÈN ---------------- */
-channels.push({
-  name: "LE MAIRE TV",
-  logo: "https://raw.githubusercontent.com/Lemaire86/lemairetv/refs/heads/main/assets/logo.png",
-  url: "https://lmtv.lemairetv.uk/hls/stream.m3u8",
-  category: "Haiti",
-  country: "Haiti"
-});
 
 /* ---------------- CATEGORIES KI PI ENPÒTAN YO ---------------- */
 const importantCategories = [
+  "Music",
   "Movies",
-  "Series",
   "Kids",
   "Cartoons",
-  "Anime",
   "News",
-  "World News",
-  "Local News",
-  "Music",
-  "Radio Music",
-  "Hits",
-  "Sports",
-  "Live Sports",
-  "Football",
-  "Basketball",
-  "General",
-  "Lifestyle",
-  "Documentary",
+  "France",
   "Haiti"
 ];
 
@@ -62,8 +60,30 @@ async function loadPlaylists() {
       const res = await fetch(url);
       const text = await res.text();
 
-      if (url.includes("Lemaire86/Le-Maire-TV")) {
-        parseM3U(text, "Haiti");
+      if (url.includes("Le-Maire-TV")) {
+        parseM3U(text, "Haiti", "Haiti");
+
+      } else if (url.includes("/music") || url.includes("/entertainment")) {
+        parseM3U(text, "Music", "France");
+
+      } else if (url.includes("/movies") || url.includes("/classic") || url.includes("/series")) {
+        parseM3U(text, "Movies", "France");
+
+      } else if (url.includes("/kids") || url.includes("/family")) {
+        parseM3U(text, "Kids", "France");
+
+      } else if (url.includes("/animation") || url.includes("/comedy")) {
+        parseM3U(text, "Cartoons", "France");
+
+      } else if (url.includes("/news") || url.includes("/business") || url.includes("/general")) {
+        parseM3U(text, "News", "France");
+
+      } else if (url.includes("/fr") || url.includes("France")) {
+        parseM3U(text, "France", "France");
+
+      } else if (url.includes("/ht") || url.includes("Haiti")) {
+        parseM3U(text, "Haiti", "Haiti");
+
       } else {
         parseM3U(text);
       }
@@ -73,7 +93,7 @@ async function loadPlaylists() {
     }
   }
 
-  /* ⭐ FÒSE LMTV VIN PREMYE CHÈN APRÈ TOUT PLAYLISTS FIN CHAJE */
+  /* FÒSE LMTV VIN PREMYE CHÈN */
   channels = [
     {
       name: "LE MAIRE TV",
@@ -87,11 +107,11 @@ async function loadPlaylists() {
 
   fillCategories();
   renderChannels();
-  loadChannel(0); // ← LMTV ap chaje otomatikman
+  loadChannel(0);
 }
 
 /* ---------------- PARSE M3U ---------------- */
-function parseM3U(text, forceCategory = null) {
+function parseM3U(text, forceCategory = null, forceCountry = null) {
   const lines = text.split("\n");
   let name = "";
   let logo = "";
@@ -111,13 +131,8 @@ function parseM3U(text, forceCategory = null) {
       const groupMatch = line.match(/group-title="(.*?)"/);
       category = groupMatch ? groupMatch[1] : "General";
 
-      const countryMatch = line.match(/country="(.*?)"/);
-      country = countryMatch ? countryMatch[1] : "Unknown";
-
-      if (forceCategory) {
-        category = forceCategory;
-        country = forceCategory;
-      }
+      if (forceCategory) category = forceCategory;
+      if (forceCountry) country = forceCountry;
     }
 
     if (line.startsWith("http")) {
